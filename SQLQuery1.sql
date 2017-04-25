@@ -3,3 +3,4 @@ insert into dbo.jasenetSet values (N'987654321n', N'Hakala', N'Niina', N'Pellonr
 insert into dbo.jasenetSet values (N'949849811h', N'Metsola', N'Antti', N'Mökki 1', N'60120', N'Hoikka', N'0400687494', N'anttimetsola@mail.com', N'2017-04-15', N'50', N'Vanha mies');
 insert into dbo.jasenetSet values (N'564891135s', N'Väänänen', N'Rauni Anneli Kaarina', N'Järvitie 5', N'90510', N'Kemijärvi', N'0509845568', N'-', N'2017-02-10', N'0', N'Poliisi');
 insert into dbo.jasenetSet values (N'216541685s', N'Mäkimaa', N'Maija', N'Helsingintie 1', N'10100', N'Helsinki', N'050648915', N'maijamakimaa@mail.com', N'2017-01-08', N'25', N'Eläkeläinen');
+insert into dbo.jasenetSet values (N'498862512s', N'Jansson', N'Veikko', N'Ruotsinkatu 4', N'50100', N'Vaasa', N'0506655248', N'veikkojansson@mail.com', N'2017-04-26', N'10', N'Sotalapsi');

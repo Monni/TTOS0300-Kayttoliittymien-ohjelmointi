@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MemberRegister;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -98,7 +99,7 @@ namespace WpfApp2
             }
             catch (Exception)
             {
-
+                // Klup. Something went wrong.
             }
             finally
             {

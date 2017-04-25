@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Entity.Core.EntityClient;
-using System.Windows;
-using System.Diagnostics;
+using MemberRegister;
 
 namespace WpfApp2
 {
@@ -139,7 +135,6 @@ namespace WpfApp2
             connection.Open();
 
             int recordsAffected = 0;
-            //this.isConnected = isConnected;
 
             using (connection)
             {
@@ -165,7 +160,6 @@ namespace WpfApp2
                     finally
                     {
                         command.Dispose();
-                        //connection.Close();
                     }
                 }
             }
@@ -219,6 +213,99 @@ namespace WpfApp2
             return jasenList;
         }
 
+        public List<jasenet> getMembersByFirstName(String name)
+        {
+            List<jasenet> jasenList = new List<jasenet>();
+
+            var ConnectionBuilder = new EntityConnectionStringBuilder(this.entityConnection);
+            SqlConnection connection = new SqlConnection(ConnectionBuilder.ProviderConnectionString);
+            connection.Open();
+
+            using (connection)
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM jasenetSet WHERE enimet LIKE @enimet";
+                    command.Parameters.AddWithValue("@enimet", "%" + name + "%");
+
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int index = 0;
+                            jasenet jasen = new jasenet();
+                            jasen.avain = reader.GetInt32(index++);
+                            jasen.hetu = reader.GetString(index++);
+                            jasen.snimi = reader.GetString(index++);
+                            jasen.enimet = reader.GetString(index++);
+                            jasen.osoite = reader.GetString(index++);
+                            jasen.postinumero = reader.GetInt32(index++);
+                            jasen.postitoimipaikka = reader.GetString(index++);
+                            jasen.puhelinnumero = reader.GetString(index++);
+                            jasen.email = reader.GetString(index++);
+                            jasen.liittymispv = reader.GetDateTime(index++);
+                            jasen.maksettu = (reader[index++] as int?) ?? 0;
+                            jasen.lisatietoa = reader.GetString(index++);
+
+                            jasenList.Add(jasen);
+
+                        }
+                    }
+                    command.Dispose();
+                }
+            }
+            return jasenList;
+        }
+
+        public List<jasenet> getMembersByLastName(String name)
+        {
+            List<jasenet> jasenList = new List<jasenet>();
+
+            var ConnectionBuilder = new EntityConnectionStringBuilder(this.entityConnection);
+            SqlConnection connection = new SqlConnection(ConnectionBuilder.ProviderConnectionString);
+            connection.Open();
+
+            using (connection)
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM jasenetSet WHERE snimi LIKE @snimi";
+                    command.Parameters.AddWithValue("@snimi", "%" + name + "%");
+
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int index = 0;
+                            jasenet jasen = new jasenet();
+                            jasen.avain = reader.GetInt32(index++);
+                            jasen.hetu = reader.GetString(index++);
+                            jasen.snimi = reader.GetString(index++);
+                            jasen.enimet = reader.GetString(index++);
+                            jasen.osoite = reader.GetString(index++);
+                            jasen.postinumero = reader.GetInt32(index++);
+                            jasen.postitoimipaikka = reader.GetString(index++);
+                            jasen.puhelinnumero = reader.GetString(index++);
+                            jasen.email = reader.GetString(index++);
+                            jasen.liittymispv = reader.GetDateTime(index++);
+                            jasen.maksettu = (reader[index++] as int?) ?? 0;
+                            jasen.lisatietoa = reader.GetString(index++);
+
+                            jasenList.Add(jasen);
+
+                        }
+                    }
+                    command.Dispose();
+                }
+            }
+            return jasenList;
+        }
 
         public List<jasenet> getUnpaidMembers(int vuosimaksu)
         {

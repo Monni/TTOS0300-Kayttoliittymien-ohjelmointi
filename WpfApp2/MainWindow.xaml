@@ -14,7 +14,7 @@
                 <StackPanel Name="spStatus" Margin="10,0,0,0">
                     <StackPanel Name="spStatusActual" Orientation="Horizontal">
                         <TextBlock Text="Tietokantayhteys: "/>
-                        <TextBlock x:Name="tbDbStatus" Text="Ei yhteyttä" Margin="7,0,0,0" Width="80" />
+                        <TextBlock x:Name="tbDbStatus" Text="Ei yhteyttä" Margin="7,0,0,0" Width="100" />
                         <Button x:Name="btnConnectDb" Content="Testaa kantayhteys" Margin="10,0,0,0" IsEnabled="True" Click="btnConnectDb_Click"/>
                         <Button x:Name="btnRefreshDb" Content="Näytä kaikki" Margin="10,0,0,0" IsEnabled="True" Click="btnRefreshDb_Click"/>
                         <Button x:Name="btnShowUnpaid" Content="Näytä maksamattomat" Margin="10,0,0,0" IsEnabled="True" Click="btnShowUnpaid_Click" />
@@ -51,7 +51,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <TextBlock Text="Liittymispäivä:"/>
-                        <DatePicker x:Name="dtpJoinDate" Margin="2,0,0,0" Text="{Binding Path=liittymispv, UpdateSourceTrigger=PropertyChanged}" Width="301"/>
+                        <DatePicker x:Name="dtpJoinDate" Margin="2,0,0,0" Text="{Binding Path=liittymispv, UpdateSourceTrigger=PropertyChanged}" Width="301" Focusable="False" IsEnabled="False"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <TextBlock Text="Maksettu:"/>
@@ -68,13 +68,21 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="export" Width="800">
-                <Button x:Name="exportToPdf" Content="Luo nimilista" Click="exportToPdf_Click" Margin="-186,0,876,0" />
-                <Button x:Name="exportToMailinglabel" Content="Luo postitustarrat" Click="exportToMailinglabel_Click"  Margin="-186,0,876,0"/>
+            <StackPanel x:Name="export" Orientation="Horizontal" Margin="20,10,469,0">
+                <Button x:Name="exportToPdf" Content="Luo nimilista" Click="exportToPdf_Click" Margin="0,0,10,0" />
+                <Button x:Name="exportToMailinglabel" Content="Luo postitustarrat" Click="exportToMailinglabel_Click"  Margin="0,0,0,0"/>
             </StackPanel>
-            <StackPanel x:Name="jasenSearch" Margin="436,0,428,0">
-                <TextBox x:Name="postalBox" Margin="50,0,0,0" />
-                <Button x:Name="btnGetMembersByPostalcode" Content="Hae postinumeron perusteella" Margin="50,0,0,0" Click="btnGetMembersByPostalcode_Click" />
+            <StackPanel x:Name="jasenSearch" Orientation="Horizontal" Margin="808,-10,53,0" Height="25">
+                <TextBox x:Name="postalBox" Margin="0,0,10,0" Width="216" />
+                <Button x:Name="btnGetMembersByPostalcode" Content="Hae postinumeron perusteella" Margin="0,0,0,0" Click="btnGetMembersByPostalcode_Click" Width="174" />
+            </StackPanel>
+            <StackPanel x:Name="firstNameSearch" Orientation="Horizontal" Margin="808,0,53,0" Height="27">
+                <TextBox x:Name="nameSearchBox" Margin="0,5,10,0" Width="216" />
+                <Button x:Name="btnGetMembersByFirstName" Content="Hae etunimen perusteella" Margin="0,5,0,0" Click="btnGetMembersByFirstName_Click"  Width="174" />
+            </StackPanel>
+            <StackPanel x:Name="lastNameSearch" Orientation="Horizontal" Margin="808,0,53,0" Height="27">
+                <TextBox x:Name="lastnameSearchBox" Margin="0,5,10,0" Width="216" />
+                <Button x:Name="btnGetMembersByLastName" Content="Hae sukunimen perusteella" Margin="0,5,0,0" Click="btnGetMembersByLastName_Click"  Width="174" />
             </StackPanel>
         </StackPanel>
     </Grid>

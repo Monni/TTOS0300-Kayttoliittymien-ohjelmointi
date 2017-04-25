@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApp2
+namespace MemberRegister
 {
     using System;
     using System.Data.Entity;

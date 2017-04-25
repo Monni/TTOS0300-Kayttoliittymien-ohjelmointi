@@ -1,15 +1,12 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MemberRegister;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace WpfApp2
 {
@@ -88,7 +85,7 @@ namespace WpfApp2
                 }
             } catch (Exception)
             {
-
+                // Klup. Something went wrong..
             } finally
             {
                 success = true;
@@ -97,19 +94,5 @@ namespace WpfApp2
             return success;
 
         }
-  
- 
-    //Adding DataRow
-   // foreach (DataGridViewRow row in dataGridView1.Rows)
-   // {
-   //     foreach (DataGridViewCell cell in row.Cells)
-   //     {
-   //         pdfTable.AddCell(cell.Value.ToString());
-   //     }
-  //  }
- 
-   
-    
-        
     }
 }

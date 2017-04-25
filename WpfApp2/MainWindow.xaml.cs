@@ -1,21 +1,14 @@
-﻿using System;
+﻿using MemberRegister;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp2
 {
@@ -270,6 +263,23 @@ namespace WpfApp2
             showMembers();
         }
 
+        private void btnGetMembersByFirstName_Click(object sender, RoutedEventArgs e)
+        {
+            String name = nameSearchBox.Text;
+            MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
+            jasenetToShow = MI.getMembersByFirstName(name);
+            showMembers();
+        }
+
+        private void btnGetMembersByLastName_Click(object sender, RoutedEventArgs e)
+        {
+            String name = lastnameSearchBox.Text;
+            MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
+            jasenetToShow = MI.getMembersByLastName(name);
+            showMembers();
+        }
+
+
         private void exportToMailinglabel_Click(object sender, RoutedEventArgs e)
         {
             ExportToMailinglabel exportToMailinglabel = new ExportToMailinglabel();
@@ -286,5 +296,7 @@ namespace WpfApp2
             jasenetToShow = MI.getUnpaidMembers(50);
             showMembers();
         }
+
+
     }
 }

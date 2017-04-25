@@ -23,9 +23,6 @@ C:\Users\Kotimonni\Documents\Visual Studio 2017\Projects\WpfApp2\WpfApp2\bin\Deb
 C:\Users\Kotimonni\Documents\Visual Studio 2017\Projects\WpfApp2\WpfApp2\bin\Debug\itextsharp.xml
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\Tietokanta.mdf
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\Tietokanta_log.ldf
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\WpfApp2.exe.config
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\WpfApp2.exe
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\WpfApp2.pdb
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\EntityFramework.dll
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\EntityFramework.SqlServer.dll
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\itextsharp.dll
@@ -35,12 +32,15 @@ E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\i
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.csprojResolveAssemblyReference.cache
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MainWindow.g.cs
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\App.g.cs
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2_Content.g.cs
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MainWindow.baml
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2.g.resources
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
 E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.csproj.GenerateResource.Cache
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2.exe
-E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\WpfApp2.pdb
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister_Content.g.cs
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister_MarkupCompile.cache
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister_MarkupCompile.lref
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\MemberRegister.exe.config
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\MemberRegister.exe
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\bin\Debug\MemberRegister.pdb
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.g.resources
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.Properties.Resources.resources
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.exe
+E:\GitHub Repositories\TTOS0300-Kayttoliittymien-ohjelmointi\WpfApp2\obj\Debug\MemberRegister.pdb
