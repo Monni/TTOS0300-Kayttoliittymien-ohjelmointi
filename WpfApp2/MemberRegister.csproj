@@ -85,8 +85,6 @@
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="ExportToMailinglabel.cs" />
     <Compile Include="ExportToPdf.cs" />
-    <Compile Include="FetchMembers.cs" />
-    <Compile Include="Hash.cs" />
     <Compile Include="jasenet.cs">
       <DependentUpon>TietokantaEntity.tt</DependentUpon>
     </Compile>
