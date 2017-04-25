@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TietokantaEntity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="TietokantaEntityContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="jasenetSet" EntityType="TietokantaEntity.jasenet" />
+  </EntityContainer>
+  <EntityType Name="jasenet">
+    <Key>
+      <PropertyRef Name="avain" />
+    </Key>
+    <Property Name="avain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hetu" Type="String" Nullable="false" />
+    <Property Name="snimi" Type="String" Nullable="false" />
+    <Property Name="enimet" Type="String" Nullable="false" />
+    <Property Name="osoite" Type="String" Nullable="false" />
+    <Property Name="postinumero" Type="Int32" Nullable="false" />
+    <Property Name="postitoimipaikka" Type="String" Nullable="false" />
+    <Property Name="puhelinnumero" Type="String" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" />
+    <Property Name="liittymispv" Type="DateTime" Nullable="false" />
+    <Property Name="maksettu" Type="Int32" Nullable="false" DefaultValue="0" />
+    <Property Name="lisatietoa" Type="String" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TietokantaEntity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TietokantaEntityStoreContainer">
+    <EntitySet Name="jasenetSet" EntityType="TietokantaEntity.Store.jasenetSet" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="jasenetSet">
+    <Key>
+      <PropertyRef Name="avain" />
+    </Key>
+    <Property Name="avain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hetu" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="snimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="enimet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="osoite" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="postinumero" Type="int" Nullable="false" />
+    <Property Name="postitoimipaikka" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="puhelinnumero" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="liittymispv" Type="datetime" Nullable="false" />
+    <Property Name="maksettu" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="lisatietoa" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TietokantaEntity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TietokantaEntityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="jasenetSet" EntityType="TietokantaEntity.jasenet" />
+        </EntityContainer>
+        <EntityType Name="jasenet">
+          <Key>
+            <PropertyRef Name="avain" />
+          </Key>
+          <Property Name="avain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hetu" Type="String" Nullable="false" />
+          <Property Name="snimi" Type="String" Nullable="false" />
+          <Property Name="enimet" Type="String" Nullable="false" />
+          <Property Name="osoite" Type="String" Nullable="false" />
+          <Property Name="postinumero" Type="Int32" Nullable="false" />
+          <Property Name="postitoimipaikka" Type="String" Nullable="false" />
+          <Property Name="puhelinnumero" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="liittymispv" Type="DateTime" Nullable="false" />
+          <Property Name="maksettu" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="lisatietoa" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TietokantaEntityStoreContainer" CdmEntityContainer="TietokantaEntityContainer">
+    <EntitySetMapping Name="jasenetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TietokantaEntity.jasenet)">
+        <MappingFragment StoreEntitySet="jasenetSet">
+          <ScalarProperty Name="avain" ColumnName="avain" />
+          <ScalarProperty Name="hetu" ColumnName="hetu" />
+          <ScalarProperty Name="snimi" ColumnName="snimi" />
+          <ScalarProperty Name="enimet" ColumnName="enimet" />
+          <ScalarProperty Name="osoite" ColumnName="osoite" />
+          <ScalarProperty Name="postinumero" ColumnName="postinumero" />
+          <ScalarProperty Name="postitoimipaikka" ColumnName="postitoimipaikka" />
+          <ScalarProperty Name="puhelinnumero" ColumnName="puhelinnumero" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="liittymispv" ColumnName="liittymispv" />
+          <ScalarProperty Name="maksettu" ColumnName="maksettu" />
+          <ScalarProperty Name="lisatietoa" ColumnName="lisatietoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

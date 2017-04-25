@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+         Title="Miikan jäsenrekisteri" Height="512" Width="1280">
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="5,5,5,0" Name="spTopPanel" Orientation="Horizontal">
+                <Border BorderThickness="4,0,0,0">
+                </Border>
+                <StackPanel Name="spStatus" Margin="10,0,0,0">
+                    <StackPanel Name="spStatusActual" Orientation="Horizontal">
+                        <TextBlock Text="Tietokantayhteys: "/>
+                        <TextBlock x:Name="tbDbStatus" Text="Ei yhteyttä" Margin="7,0,0,0" Width="80" />
+                        <Button x:Name="btnConnectDb" Content="Testaa kantayhteys" Margin="10,0,0,0" IsEnabled="True" Click="btnConnectDb_Click"/>
+                        <Button x:Name="btnRefreshDb" Content="Näytä kaikki" Margin="10,0,0,0" IsEnabled="True" Click="btnRefreshDb_Click"/>
+                        <Button x:Name="btnShowUnpaid" Content="Näytä maksamattomat" Margin="10,0,0,0" IsEnabled="True" Click="btnShowUnpaid_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="spMid" Orientation="Horizontal" Margin="0,20,0,0">
+
+                <StackPanel x:Name="spMidLeft" Width="800">
+                    <DataGrid x:Name="dgMembers" AutoGenerateColumns="True" ItemsSource="{Binding}" SelectionChanged="DataGrid_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel x:Name="spMidRight" Margin="10,0,0,0">
+                    <TextBlock Text="Jäsenen Tiedot:" TextAlignment="Center"/>
+                    <StackPanel x:Name="spMemberNames" Orientation="Horizontal">
+                        <TextBlock Text="Nimi: " Width="52"/>
+                        <TextBox x:Name="tbFirstNames" Width="160" Text="{Binding Path=enimet, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox x:Name="tbLastNames" Width="160" Margin="5,0,0,0" Text="{Binding Path=snimi, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Hetu: " Width="52"/>
+                        <TextBox x:Name="tbHetu" Width="325" Text="{Binding Path=hetu, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Osoite: " Width="52"/>
+                        <TextBox x:Name="tbAddrActual" Width="150" Text="{Binding Path=osoite, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox x:Name="tbAddrZip" Width="67" Margin="2,0,0,0" Text="{Binding Path=postinumero, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox x:Name="tbAddrCity" Width="104" Margin="2,0,0,0" Text="{Binding Path=postitoimipaikka, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Puh Nro:" Width="52"/>
+                        <TextBox x:Name="tbPhnNumber" Margin="2,0,0,0" Width="132" Text="{Binding Path=puhelinnumero, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Email: " Margin="5,0,0,0" />
+                        <TextBox x:Name="tbEmail" Margin="2,0,0,0" Width="150" Text="{Binding Path=email, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Liittymispäivä:"/>
+                        <DatePicker x:Name="dtpJoinDate" Margin="2,0,0,0" Text="{Binding Path=liittymispv, UpdateSourceTrigger=PropertyChanged}" Width="301"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Maksettu:"/>
+                        <TextBox x:Name="tbPaidAmount" Width="320" Margin="5,0,0,0" Text="{Binding Path=maksettu, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Lisätietoa:" Width="52" />
+                        <TextBox x:Name="tbInfo" Width="320" Height="100" Margin="5,0,0,0" Text="{Binding Path=lisatietoa, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button x:Name="btnSaveChanges" Content="Tallenna muutokset" HorizontalAlignment="Center" Click="btnSaveChanges_Click"/>
+                        <Button x:Name="btnAddMember" Content="Lisää uusi jäsen" Margin="50,0,0,0" Click="btnAddMember_Click"/>
+                        <Button x:Name="btnRemoveMember" Content="Poista valittu jäsen" Margin="50,0,0,0" Click="btnRemoveMember_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="export" Width="800">
+                <Button x:Name="exportToPdf" Content="Luo nimilista" Click="exportToPdf_Click" Margin="-186,0,876,0" />
+                <Button x:Name="exportToMailinglabel" Content="Luo postitustarrat" Click="exportToMailinglabel_Click"  Margin="-186,0,876,0"/>
+            </StackPanel>
+            <StackPanel x:Name="jasenSearch" Margin="436,0,428,0">
+                <TextBox x:Name="postalBox" Margin="50,0,0,0" />
+                <Button x:Name="btnGetMembersByPostalcode" Content="Hae postinumeron perusteella" Margin="50,0,0,0" Click="btnGetMembersByPostalcode_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

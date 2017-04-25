@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TietokantaEntityStoreContainer" CdmEntityContainer="TietokantaEntityContainer">
+    <EntitySetMapping Name="jasenetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TietokantaEntity.jasenet)">
+        <MappingFragment StoreEntitySet="jasenetSet">
+          <ScalarProperty Name="avain" ColumnName="avain" />
+          <ScalarProperty Name="hetu" ColumnName="hetu" />
+          <ScalarProperty Name="snimi" ColumnName="snimi" />
+          <ScalarProperty Name="enimet" ColumnName="enimet" />
+          <ScalarProperty Name="osoite" ColumnName="osoite" />
+          <ScalarProperty Name="postinumero" ColumnName="postinumero" />
+          <ScalarProperty Name="postitoimipaikka" ColumnName="postitoimipaikka" />
+          <ScalarProperty Name="puhelinnumero" ColumnName="puhelinnumero" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="liittymispv" ColumnName="liittymispv" />
+          <ScalarProperty Name="maksettu" ColumnName="maksettu" />
+          <ScalarProperty Name="lisatietoa" ColumnName="lisatietoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

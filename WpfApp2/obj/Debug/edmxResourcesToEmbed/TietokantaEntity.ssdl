@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TietokantaEntity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TietokantaEntityStoreContainer">
+    <EntitySet Name="jasenetSet" EntityType="TietokantaEntity.Store.jasenetSet" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="jasenetSet">
+    <Key>
+      <PropertyRef Name="avain" />
+    </Key>
+    <Property Name="avain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hetu" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="snimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="enimet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="osoite" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="postinumero" Type="int" Nullable="false" />
+    <Property Name="postitoimipaikka" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="puhelinnumero" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="liittymispv" Type="datetime" Nullable="false" />
+    <Property Name="maksettu" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="lisatietoa" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema>
