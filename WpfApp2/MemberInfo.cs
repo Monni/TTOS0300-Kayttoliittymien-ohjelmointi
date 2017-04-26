@@ -28,15 +28,15 @@ namespace WpfApp2
         {
             this.connection = connection;
             this.isConnected = isConnected;
-            updateQuery = "Update " + "jasenetSet" + " SET hetu=@hetu, snimi=@snimi, enimet=@enimet, osoite=@osoite, postinumero=@postinumero, postitoimipaikka=@postitoimipaikka, puhelinnumero=@puhelinnumero, email=@email, liittymispv=@liittymis_pvm, eroamispv=@eroamis_pvm, tilinumero=@tilinumero";
 
         }
 
-
+        // Päivitetään jäsenen tiedot avaimen perusteella
         public bool UpdateMemberInfo(string[] info, int avain)
         {
             bool success = false;
 
+            // Alustetaan yhteys
             var ConnectionBuilder = new EntityConnectionStringBuilder(this.entityConnection);
             SqlConnection connection = new SqlConnection(ConnectionBuilder.ProviderConnectionString);
             connection.Open();
@@ -76,10 +76,10 @@ namespace WpfApp2
                     }
                 }
             }
-            return success;
+            return success; // Palautetaan boolean onnistumisesta
         }
 
-
+        // Luodaan uusi jäsen kantaan
         public Boolean createNewMember(string[] info, Boolean isConnected)
         {
             Boolean success = false;
@@ -124,10 +124,10 @@ namespace WpfApp2
                     }
                 }
             }
-            return success;
+            return success; // Palautetaan boolean onnistumisesta
         }
 
-
+        // Poistetaan jäsen kannasta avaimen perusteella
         public void removeMember(int avain)
         {
             var ConnectionBuilder = new EntityConnectionStringBuilder(this.entityConnection);
@@ -165,7 +165,7 @@ namespace WpfApp2
             }
         }
 
-
+        // Haetaan jäsen kannasta postinumeroperusteisesti, palautetaan lista kutsujalle.
         public List<jasenet> GetMembersByPostalcode(int postalcode)
         {
             List<jasenet> jasenList = new List<jasenet>();
@@ -213,6 +213,7 @@ namespace WpfApp2
             return jasenList;
         }
 
+        // Haetaan jäsenet kannasta etunimiperusteisesti, palautetaan lista kutsujalle.
         public List<jasenet> getMembersByFirstName(String name)
         {
             List<jasenet> jasenList = new List<jasenet>();
@@ -260,6 +261,7 @@ namespace WpfApp2
             return jasenList;
         }
 
+        // Haetaan lista kannasta sukunimen perusteella, palautetaan lista kutsujalle
         public List<jasenet> getMembersByLastName(String name)
         {
             List<jasenet> jasenList = new List<jasenet>();
@@ -307,6 +309,7 @@ namespace WpfApp2
             return jasenList;
         }
 
+        // Haetaan lista jäsenmaksua maksamattomista jäsenistä kannasta, palautetaan kutsujalle.
         public List<jasenet> getUnpaidMembers(int vuosimaksu)
         {
             List<jasenet> jasenList = new List<jasenet>();
@@ -352,7 +355,6 @@ namespace WpfApp2
                     //connection.Close();
                 }
             }
-
 
             return jasenList;
         }

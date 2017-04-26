@@ -17,10 +17,10 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        //testdbEntities dbEnts;
+        // Luodaan entiteetit mallin mukaan
         TietokantaEntityContainer dbEnts;
 
-        // What list to show
+        // Tallennetaan näytettävä lista
         List<jasenet> jasenetToShow;
 
         ObservableCollection<jasenet> localMembers;
@@ -36,16 +36,18 @@ namespace WpfApp2
         }
         private void GetMembers()
         {
-            //dgMembers.DataContext = dbEnts.jasenetSet.ToList();
             jasenetToShow = dbEnts.jasenetSet.ToList();
             dgMembers.DataContext = jasenetToShow;
             isMembers = true;
         }
 
+        // Valitse kaikki jäsenet näytettäväksi
         private void GetAllMembers()
         {
             jasenetToShow = dbEnts.jasenetSet.ToList();
         }
+
+        // Valmistele ohjelma
         private void InitStuff()
         {
             dbEnts = new TietokantaEntityContainer(); //Creating a context
@@ -62,11 +64,14 @@ namespace WpfApp2
                 MessageBox.Show(e.Message);
             }
         }
+
+        // Kutsutaan, kun datagridissa klikataan riviä
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             spMidRight.DataContext = dgMembers.SelectedItem;
         }
 
+        // Tallennetaan jäsenelle tehdyt muutokset
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             string[] info = new string[11];
@@ -109,6 +114,7 @@ namespace WpfApp2
 
         }
 
+        // Lisätään uusi jäsen
         private void btnAddMember_Click(object sender, RoutedEventArgs e)
         {
             string[] info = new string[11];
@@ -143,6 +149,7 @@ namespace WpfApp2
 
         }
 
+        // Poistetaan valittu jäsen
         private void btnRemoveMember_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -165,6 +172,7 @@ namespace WpfApp2
 
         }
 
+        // Yhdistetään tietokantaan
         private void btnConnectDb_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckConnectionStatus())
@@ -182,6 +190,7 @@ namespace WpfApp2
 
         }
 
+        // Tarkistetaan tietokantayhteys. Tila tulostetaan käyttäjälle.
         private bool CheckConnectionStatus()
         {
 
@@ -197,6 +206,7 @@ namespace WpfApp2
             }
         }
 
+        // Listataan jäsenet
         private void ListMembers()
         {
             if (CheckConnectionStatus())
@@ -217,6 +227,7 @@ namespace WpfApp2
             }
         }
 
+        // Haetaan kaikki kannasta
         private void btnRefreshDb_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckConnectionStatus())
@@ -239,6 +250,7 @@ namespace WpfApp2
 
         }
 
+        // Luodaan näytetystä listasta PDF
         private void exportToPdf_Click(object sender, RoutedEventArgs e)
         {          
             ExportToPdf exportToPdf = new ExportToPdf();
@@ -249,12 +261,13 @@ namespace WpfApp2
             }
         }
 
-
+        // Kutsutaan jäsenet näytettäväksi taululle
         private void showMembers()
         {
             dgMembers.DataContext = jasenetToShow;
         }
 
+        // Haetaan jäseniä postinumeroperusteisesti
         private void btnGetMembersByPostalcode_Click(object sender, RoutedEventArgs e)
         {
             int postalcode = int.Parse(postalBox.Text);
@@ -263,6 +276,7 @@ namespace WpfApp2
             showMembers();
         }
 
+        // Haetaan jäseniä etunimen perusteella
         private void btnGetMembersByFirstName_Click(object sender, RoutedEventArgs e)
         {
             String name = nameSearchBox.Text;
@@ -271,6 +285,7 @@ namespace WpfApp2
             showMembers();
         }
 
+        // Haetaan jäseniä sukunimen perusteella
         private void btnGetMembersByLastName_Click(object sender, RoutedEventArgs e)
         {
             String name = lastnameSearchBox.Text;
@@ -279,7 +294,7 @@ namespace WpfApp2
             showMembers();
         }
 
-
+        // Tallennetaan näytettävä lista postitustarra-PDF:ksi
         private void exportToMailinglabel_Click(object sender, RoutedEventArgs e)
         {
             ExportToMailinglabel exportToMailinglabel = new ExportToMailinglabel();
@@ -290,6 +305,7 @@ namespace WpfApp2
             }
         }
 
+        // Haetaan kannasta jäsenmaksua maksamattomat jäsenet
         private void btnShowUnpaid_Click(object sender, RoutedEventArgs e)
         {
             MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
