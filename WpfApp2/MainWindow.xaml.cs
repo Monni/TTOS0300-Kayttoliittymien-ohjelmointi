@@ -93,9 +93,8 @@ namespace WpfApp2
                 int avain = jasen.avain;
                 string jasenString = jasen.enimet + " " + jasen.snimi + " (" + jasen.hetu + ") ";
 
-
                 MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
-                bool success = MI.UpdateMemberInfo(info, avain);
+                bool success = MI.UpdateMemberInfo(info, avain); // Päivitä henkilön tiedot avainperusteisesti
                 if (success)
                 {
                     MessageBox.Show("Jäsenen " + jasenString + " tiedot päivitetty");
@@ -103,11 +102,11 @@ namespace WpfApp2
                 }
 
             }
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException) // Jos listasta ei ole valittu muokattavaa käyttäjää
             {
                 MessageBox.Show("Valitse muokattava kohde");
             }
-            catch (Exception error)
+            catch (Exception error) // Jos joku muu menee vikaan
             {
                 MessageBox.Show(error.StackTrace + "\n" + error.Message);
             }
@@ -117,7 +116,8 @@ namespace WpfApp2
         // Lisätään uusi jäsen
         private void btnAddMember_Click(object sender, RoutedEventArgs e)
         {
-            string[] info = new string[11];
+            // Hae kaikista vaadittavista input-bokseista tiedot ja listaa ne
+            string[] info = new string[11]; 
             info[0] = tbHetu.Text;
             info[1] = tbLastNames.Text;
             info[2] = tbFirstNames.Text;
@@ -135,14 +135,14 @@ namespace WpfApp2
             try
             {
                 MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
-                bool success = MI.createNewMember(info, CheckConnectionStatus());
+                bool success = MI.createNewMember(info, CheckConnectionStatus()); // Luo uusi jäsen syötteiden perusteella
                 if (success)
                 {
                     MessageBox.Show("Jäsen " + jasenString + " lisätty");
                     ListMembers();
                 }
             }
-            catch (Exception error)
+            catch (Exception error) // Jos joku menee vikaan, tulosta virhe
             {
                 MessageBox.Show(error.StackTrace + "\n" + error.Message);
             }
@@ -159,13 +159,13 @@ namespace WpfApp2
                 string jasenpoisto = jasen.enimet + " " + jasen.snimi + " (" + jasen.hetu + ") ";
              
                 MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
-                MI.removeMember(avain);
+                MI.removeMember(avain); // Poista valittu jäsen avainperusteisesti
                 MessageBox.Show("Jäsen: " + jasenpoisto + " poistettu. ID " + avain);
                 ListMembers();
-            } catch (ArgumentOutOfRangeException)
+            } catch (ArgumentOutOfRangeException) // Jos poista-nappia klikattu ilman jäsenen valintaa
             {
                 MessageBox.Show("Valitse poistettava jäsen");
-            } catch (Exception error)
+            } catch (Exception error) // Jos joku muu virhe tapahtuu, tulosta näytölle
             {
                 MessageBox.Show(error.StackTrace + "\n" + error.Message);
             }
@@ -177,6 +177,7 @@ namespace WpfApp2
         {
             if (!CheckConnectionStatus())
             {
+            // Testaa yhteys. Ei välttämätön lokaalissa tietokannassa
                 try
                 {
                     MemberDbConn.ConnectDatabase();
@@ -196,11 +197,13 @@ namespace WpfApp2
 
             if (MemberDbConn.CheckConnection())
             {
+                // Tulosta onnistunut yhteystesti näytölle
                 tbDbStatus.Text = "Yhteys kunnossa";
                 return true;
             }
             else
             {
+                // Tulosta epäonnistunut yhteystesti näytölle
                 tbDbStatus.Text = "Yhteys alhaalla";
                 return false;
             }
@@ -254,7 +257,9 @@ namespace WpfApp2
         private void exportToPdf_Click(object sender, RoutedEventArgs e)
         {          
             ExportToPdf exportToPdf = new ExportToPdf();
+            // Kutsu exporttia ja anna parametreina näkyvä jäsenlista. Paluuarvona boolean onnistumisesta
             Boolean success = exportToPdf.Export(jasenetToShow);
+            // Jos export onnistuu, ilmoita käyttäjälle
             if (success)
             {
                 MessageBox.Show("PDF tallennettu");
@@ -281,7 +286,7 @@ namespace WpfApp2
         {
             String name = nameSearchBox.Text;
             MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
-            jasenetToShow = MI.getMembersByFirstName(name);
+            jasenetToShow = MI.getMembersByFirstName(name); // Parametreina annetaan etunimi
             showMembers();
         }
 
@@ -290,7 +295,7 @@ namespace WpfApp2
         {
             String name = lastnameSearchBox.Text;
             MemberInfo MI = new MemberInfo(MemberDbConn.connection, CheckConnectionStatus());
-            jasenetToShow = MI.getMembersByLastName(name);
+            jasenetToShow = MI.getMembersByLastName(name); // Parametreina annetaan sukunimi
             showMembers();
         }
 
@@ -298,7 +303,9 @@ namespace WpfApp2
         private void exportToMailinglabel_Click(object sender, RoutedEventArgs e)
         {
             ExportToMailinglabel exportToMailinglabel = new ExportToMailinglabel();
+            // Kutsu exporttia ja anna parametreina näkyvä jäsenlista. Paluuarvona boolean onnistumisesta
             Boolean success = exportToMailinglabel.Export(jasenetToShow);
+            // Näytä onnistuminen käyttäjälle
             if (success)
             {
                 MessageBox.Show("Postitustarrat luotu");
