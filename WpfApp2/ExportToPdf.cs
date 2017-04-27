@@ -15,8 +15,10 @@ namespace WpfApp2
         public ExportToPdf() {}
         public Boolean Export(List<jasenet> jasenetList)
         {
+            // Onnistuminen. Palautetaan lopussa kutsujalle
             Boolean success = false;
             
+            // Sortataan lista sukunimen mukaan
             List<jasenet> sortedList = jasenetList.OrderBy(o => o.snimi).ToList();
 
             try
@@ -42,13 +44,14 @@ namespace WpfApp2
                 headerList.Add(new PdfPCell(new Phrase("Maksettu")));
                 headerList.Add(new PdfPCell(new Phrase("Lisätietoa")));
 
+                // Lisätään luodut cellit pdf:aan
                 foreach (PdfPCell column in headerList)
                 {
                     column.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
                     pdfTable.AddCell(column);
                 }
                 
-                // Adding DataRow
+                // Lisätään käyttäjädata pdf:aan
                 foreach (jasenet jasen in sortedList)
                 {
                     pdfTable.AddCell(jasen.hetu);
@@ -65,15 +68,20 @@ namespace WpfApp2
 
                 }
 
-                //Exporting to PDF
+                // Tallennuskansion sijainti
                 string binPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 string folderPath = Path.GetFullPath(Path.Combine(binPath, @"..\..\..\PDFs\"));
+                
+                // Tarkista, onko kansio olemassa. Luo se, jos ei
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
 
+                // Hae nykyhetki
                 String currentTime = DateTime.Now.ToString();
+                
+                // Luo tiedosto. Käytä nykyhetkeä ajassa yksilöintiä varten
                 using (FileStream stream = new FileStream(folderPath + "Namelist-" + currentTime + ".pdf", FileMode.Create))
                 {
                     Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
@@ -91,7 +99,7 @@ namespace WpfApp2
                 success = true;
             }
 
-            return success;
+            return success; // Palauta tieto onnistumisesta
 
         }
     }
