@@ -14,28 +14,36 @@ namespace WpfApp2
         public ExportToMailinglabel() { }
         public Boolean Export(List<jasenet> jasenetList)
         {
+            // Tieto exporttauksen onnistumisesta. Palautetaan kutsujalle
             Boolean success = false;
 
             try
             {
+                // Sortataan jäsenlista postinumeron mukaan
                 List<jasenet> sortedList = jasenetList.OrderBy(o => o.postinumero).ToList();
 
-                //Exporting to PDF
+                // Tallennuskansion tiedot
                 string binPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 string folderPath = Path.GetFullPath(Path.Combine(binPath, @"..\..\..\PDFs\"));
+                
+                // Tarkistetaan, onko kansio olemassa. Jos ei, luodaan se
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
 
+                // Haetaan nykyhetki
                 String currentTime = DateTime.Now.ToString();
+                
+                // Luodaan tiedosto ja pidetään avoinna kirjoitusta varten.
+                // Yksilöintiä varten nimessä käytetään nykyhetkeä
                 using (FileStream stream = new FileStream(folderPath + "Postitustarrat-" + currentTime + ".pdf", FileMode.Create))
                 {
                     Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
                     PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
 
-
+                    // Käydään looppi joka jäsenelle listassa
                     foreach (jasenet jasen in sortedList)
                     {
                         // Luodaan tarvittavan pitkä pdfPTable
@@ -51,7 +59,7 @@ namespace WpfApp2
                         pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
                         pdfTable2.DefaultCell.BorderWidth = 0;
 
-                        // Adding Header row
+                        // Lisätään otsikkotekstit
                         List<PdfPCell> headerList1 = new List<PdfPCell>();
                         headerList1.Add(new PdfPCell(new Phrase("Sukunimi")));
                         headerList1.Add(new PdfPCell(new Phrase("Etunimet")));
@@ -76,7 +84,7 @@ namespace WpfApp2
                         pdfTable2.AddCell(jasen.postinumero.ToString());
                         pdfTable2.AddCell(jasen.postitoimipaikka);
 
-                        // Create empty space in between
+                        // Luodaan tyhjä rivi postitustarrojen erottelua varten
                         PdfPTable pdfTable3 = new PdfPTable(3);
                         PdfPCell cellBlankRow = new PdfPCell(new Phrase(" "));
                         pdfTable3.DefaultCell.Padding = 3;
@@ -87,12 +95,13 @@ namespace WpfApp2
                         pdfTable3.AddCell(" ");
                         pdfTable3.AddCell(" ");
 
+                        // Lisätään luodut tablet lopulliseen pdf:aan
                         pdfDoc.Add(pdfTable1);
                         pdfDoc.Add(pdfTable2);
                         pdfDoc.Add(pdfTable3);
 
                     }
-                    // Close everything opened..
+                    // Suljetaan tiedosto ja stream, kun data kirjoitettu
                     pdfDoc.Close();
                     stream.Close();
                 }
@@ -105,7 +114,7 @@ namespace WpfApp2
             {
                 success = true;
             }
-            return success;
+            return success; // Palautetaan boolean onnistumisesta
         }
     }
 }
